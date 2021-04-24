@@ -130,6 +130,7 @@ int* mergeSortedArrays(int first[], int second[], int firstSize, int secondSize)
 		k++;
 	}
 
+
 	if (i < firstSize) {
 		for (temp = i; temp < firstSize; temp++)
 			mergedSortedArrays[k] = first[temp];
@@ -160,9 +161,57 @@ void mergeArrays(int first[], int second[], int firstSize, int secondSize, int m
 		merged[k++] = second[j++];
 
 	return;
+}
+
+void swapValuesPointers(int* first, int* second) {
+	int temp = *first;
+	printf("*first = %p, *second = %p, *temp = %d\n", first, second, temp);
+	press();
+
+	*first = *second;
+	printf("*first = %p, *second = %p, *temp = %d\n", first, second, temp);
+	press();
+
+	*second = temp;
+	printf("*first = %p, *second = %p, *temp = %d\n", first, second, temp);
+	press();
+
+	return;	
+}
+
+void swapPointersDebugged(int** first, int** second) {
+	int* temp = *first;
+	printf("first = %p, *first = %p, **first = %d\n", first, *first, **first);
+	press();
+
+	printf("second = %p, *second = %p, **second = %d\n", second, *second, **second);
+	press();
+
+	printf("temp = %p, *temp = %d\n", temp, *temp);
+	press();
+
+	*first = *second;
+	printf("*first = %p, *second = %p, *temp = %p\n", first, second, temp);
+	press();
+
+	*second = temp;
+	printf("*first = %p, *second = %p, *temp = %p\n", first, second, temp);
+	press();
+
+	return;	
+}
 
 
-void swapPonters(int** first, int** second) {
+void swapPointers(int** first, int** second) {
+	int* temp = *first;
+	*first = *second;
+	*second = temp;
+	return;	
+}
 
-	return
+void swapValues(int* first, int* second) {
+	int temp = *first;
+	*first = *second;
+	*second = temp;
+	return;
 }
