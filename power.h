@@ -2,18 +2,23 @@
 #include <stdlib.h>
 #include <math.h>
 
-float expo(int base, float expo) {
+
+int absolute(int num) {
+	return (num < 0) ? 0 - num : num;
+}
+
+float expo(int base, int power) {
 	if (expo == 0)
 		return 1;
 
-	float power = 1;
+	float result = 1;
 	int i = 0;
-	while (i < abs(expo)) {
-		power = power * base;
+	while (i < absolute(power)) {
+		result = result * base;
 		i++;
 	}
 
-	return expo > 0 ? power : 1 / power;
+	return power > 0 ? result : 1 / result;
 }
 
 
@@ -51,6 +56,13 @@ void reverseArray(int* arr, int size) {
     } 
 
     return; 
+}
+
+int* PrimitiveReversedArray(int arr[], int rev[], int size) {
+	int i;
+	for (i = 0; i < size; i++)
+		rev[size - 1 - i] = arr[i];
+	return rev;
 }
 
 
@@ -147,12 +159,13 @@ int* mergeSortedArrays(int first[], int second[], int firstSize, int secondSize)
 	return mergedSortedArrays;
 }
 
-void mergeArrays(int first[], int second[], int firstSize, int secondSize, int merged[]) {
+int* mergeArrays(int first[], int second[], int firstSize, int secondSize, int merged[]) {
 
 	int i = 0, j = 0, k = 0;
 
-	while (i < firstSize && j < secondSize)
-		merged[k++] = firstSize < secondSize ? first[i++] : second[j++];
+	while (i < firstSize && j < secondSize){
+		merged[k++] = first[i] < second[j] ? first[i++] : second[j++];
+	}
 
 	while (i < firstSize)
 		merged[k++] = first[i++];
@@ -160,7 +173,17 @@ void mergeArrays(int first[], int second[], int firstSize, int secondSize, int m
 	while (j < secondSize)
 		merged[k++] = second[j++];
 
-	return;
+	return merged;
+}
+
+int* findFirstKthPrimes(int primes[], int size) {
+	if (i == 0)
+		return primes;
+	int k = 0;
+	while (i < size)
+		isPrime(i) ? primes[k++] = i++: i++;
+
+	return primes;
 }
 
 /************************************/
@@ -295,5 +318,28 @@ int findTheKthElement(int* arr, int size, int k) {
 		temp[i] = *(arr + i);
 
 	bubbleSort(temp, size);
-	return temp[2];	
+	return temp[k - 1];	
+}
+
+int* fibonacciKFirstElements(int fibo[], int size) {
+	
+	if (size == 1) {
+		fibo[0] = 1;
+		return fibo;
+	}
+
+	if (size == 2) {
+		fibo[0] = 1;
+		fibo[1] = 1;
+		return fibo;
+	}
+
+	int i;
+	fibo[0] = 1;
+	fibo[1] = 1;
+	for (i = 2; i < size; i++) {
+		fibo[i] = fibo[i - 1] + fibo[i - 2];
+	}
+
+	return fibo;
 }
