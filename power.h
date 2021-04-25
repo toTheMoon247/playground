@@ -163,21 +163,10 @@ void mergeArrays(int first[], int second[], int firstSize, int secondSize, int m
 	return;
 }
 
-void swapValuesPointers(int* first, int* second) {
-	int temp = *first;
-	printf("*first = %p, *second = %p, *temp = %d\n", first, second, temp);
-	press();
+/************************************/
+/**			 Swap Pointers  	   **/
+/************************************/
 
-	*first = *second;
-	printf("*first = %p, *second = %p, *temp = %d\n", first, second, temp);
-	press();
-
-	*second = temp;
-	printf("*first = %p, *second = %p, *temp = %d\n", first, second, temp);
-	press();
-
-	return;	
-}
 
 void swapPointersDebugged(int** first, int** second) {
 	int* temp = *first;
@@ -214,4 +203,97 @@ void swapValues(int* first, int* second) {
 	*first = *second;
 	*second = temp;
 	return;
+}
+
+/************************************/
+/**			 STRINGS			   **/
+/************************************/	 
+
+void printString(char* text) {
+	while (*text != '\0') {
+		printf("%c", *text);
+		text++;
+	}
+	printf("\n");
+	return;
+}
+
+
+char* reverseWord(char* str, int size) {
+
+	char* reversed = malloc (sizeof (char) * size);
+	if (!reversed)
+		return NULL;
+
+	// Place the null termination
+	reversed[size - 1] = '\0';
+
+	int i = 0;
+	while (*str != '\0') {
+		reversed[size - 2 - i] = *str;
+		i++;
+		str++;
+	}
+	return reversed;
+}
+
+int length(char* str) {
+	if (str == "")
+		return 0;
+
+	int size = 0;
+	while (*str != '\0') {
+		size++;
+		str++;
+	}
+
+
+	return size;
+}
+
+
+/************************************/
+/**			 SORTS  			   **/
+/************************************/	 
+
+
+void swap(int* first, int* second) {
+	int temp = *first;
+	*first = *second;
+	*second = temp;
+	return;
+}
+
+
+void bubble(int* arr, int size) {
+	int temp;
+	int i;
+	for (i = 1; i < size; i++) {
+		if (*(arr + i) < *(arr + i -1)) {
+			swap(arr + i, arr + i -1);
+		}
+	}
+
+	return;
+}
+
+
+void bubbleSort(int* arr, int size) {
+
+	int i;
+	for (i = 0; i < size; i++) {
+		bubble(arr, size - i);
+	}
+
+	return;
+}
+
+int findTheKthElement(int* arr, int size, int k) {
+	int temp[size];
+	int i;
+	for (i = 0; i < size; i++) 
+		temp[i] = *(arr + i);
+
+	bubbleSort(temp, size);
+	return temp[2];	
 }

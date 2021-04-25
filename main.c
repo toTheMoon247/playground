@@ -4,13 +4,13 @@ int main()
 {
 
 	int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int ten = 10;
-	int twenty = 20;
-	int* first = &ten;
-	int* second = &twenty;
-	swapPointers(&first, &second);
-	printf("after swap ten = %d, twenty = %d\n", ten, twenty);
-	printf("after swap *first = %d, *second = %d\n", *first, *second);
+	int unsorted[10] = {1, 7, 3, 9, 6, 10, 2, 8, 4, 5};
+	char joedimaggio[12] = "joedimaggio";
 
+	printArray(unsorted, 10);
+	press();
+	bubbleSort(unsorted, 10);
+	printArray(unsorted, 10);
+	
 	return 0;
 }
