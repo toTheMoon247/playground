@@ -177,11 +177,12 @@ int* mergeArrays(int first[], int second[], int firstSize, int secondSize, int m
 }
 
 int* findFirstKthPrimes(int primes[], int size) {
-	if (i == 0)
+	if (size == 0)
 		return primes;
-	int k = 0;
-	while (i < size)
-		isPrime(i) ? primes[k++] = i++: i++;
+
+	int k = 0, i = 2;
+	while (k < size)
+		isPrime(i) ? primes[k++] = i++ : i++;
 
 	return primes;
 }
@@ -274,6 +275,23 @@ int length(char* str) {
 	return size;
 }
 
+
+char* shiftLeft(char text[], int shift, char shifted[]) {
+
+	int j = 0;
+	int i = shift;
+	while (text[i] != '\0') {
+		shifted[j++] = text[i++];
+	}
+
+	i = 0;
+	while (i < shift) {
+		shifted[j++] = text[i++];
+	}
+
+	shifted[j] = '\0';
+	return shifted;
+}
 
 /************************************/
 /**			 SORTS  			   **/

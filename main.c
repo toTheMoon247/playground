@@ -7,14 +7,18 @@ int main()
 	int unsorted[10] = {1, 7, 0, 9, 6, 10, 2, 8, 4, 5};
 	char joedimaggio[12] = "joedimaggio";
 
-	int first[] = {1, 7, 13, 15};
-	int second[] = {2, 3, 4, 55, 56, 57, 58};
-	int merged[11];
-
 	int* res;
+	int primes[10];
 
-	res = mergeArrays(first, second, 4, 7, merged);
-	printArray(res, 11);
+	res = findFirstKthPrimes(primes, 10);
+	printArray(res, 10);
+	press();
+
+	char* result;
+	char shifted[12];
+	result = shiftLeft(joedimaggio, 3, shifted);
+	printf("shifted = %s \n", shifted);
+	press();
 
 	return 0;
 }
