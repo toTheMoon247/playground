@@ -7,17 +7,10 @@ int main()
 	int unsorted[10] = {1, 7, 0, 9, 6, 10, 2, 8, 4, 5};
 	char joedimaggio[12] = "joedimaggio";
 
-	int* res;
-	int primes[10];
-
-	res = findFirstKthPrimes(primes, 10);
-	printArray(res, 10);
-	press();
-
-	char* result;
-	char shifted[12];
-	result = shiftLeft(joedimaggio, 3, shifted);
-	printf("shifted = %s \n", shifted);
+	int first = 24;
+	int second = 24;
+	int num = first ^ second;
+	printf("num = %i\n", num);
 	press();
 
 	return 0;
